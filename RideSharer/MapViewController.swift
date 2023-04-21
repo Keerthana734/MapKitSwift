@@ -41,9 +41,7 @@ class MapViewController: UIViewController {
       case .authorizedWhenInUse:
         mapView.showsUserLocation = true
        case .denied: // Show alert telling users how to turn on permissions
-          let alert = UIAlertController(title: "Location Denied", message:"User have not provided permission", preferredStyle: UIAlertController.Style.alert)
-          alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
-          self.present(alert, animated: true, completion: nil)
+         showDeniedAlert()
        break
       case .notDetermined:
         locationManager.requestWhenInUseAuthorization()
@@ -64,6 +62,12 @@ class MapViewController: UIViewController {
 //        mapView.addAnnotation(annotations)
 //      }
 //    }
+    func showDeniedAlert() {
+        let alert = UIAlertController(title: "Location Denied", message:"User have not provided permission", preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+    }
+    
 }
 //struct Stadium {
 //  var name: String
